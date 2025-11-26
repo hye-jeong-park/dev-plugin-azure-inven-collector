@@ -1,0 +1,250 @@
+search:
+  fields:
+    - Resource Group: data.resource_group
+    - Location: data.location
+    - Subscription: data.subscription_name
+    - Subscription ID: account
+    - Login Server: data.login_server
+    - Pricing Tier: data.sku.name
+    - Provisioning State: data.provisioning_state
+
+table:
+  sort:
+    key: data.id
+    desc: false
+  fields:
+    - Name: name
+    - Resource Group: data.resource_group
+    - Location: data.location
+    - Subscription: data.subscription_name
+    - Login Server: data.login_server
+    - Pricing Tier: data.sku.name
+    - Provisioning State: data.provisioning_state
+      type: enum
+      enums:
+        - Succeeded:
+          icon_image: ic_circle-filled
+          icon_color: green.500
+          type: state
+        - Failed:
+          icon_image: ic_circle-filled
+          icon_color: red.500
+          type: state
+        - Creating:
+          icon_image: ic_circle-filled
+          icon_color: yellow.500
+          type: state
+        - Updating:
+          icon_image: ic_circle-filled
+          icon_color: yellow.500
+          type: state
+        - Deleting:
+          icon_image: ic_circle-filled
+          icon_color: gray.500
+          type: state
+        - Canceled:
+          icon_image: ic_circle-filled
+          icon_color: gray.500
+          type: state
+    - Admin User: data.admin_user_enabled
+      type: enum
+      enums:
+        - "true":
+          type: badge
+          options:
+          text: Enabled
+          color: green.500
+        - "false":
+          type: badge
+          options:
+          text: Disabled
+          color: gray.500
+
+# 1. 설정 카테고리
+tabs.0:
+  name: Access Keys
+  type: item
+  fields:
+    - Registry Name: name
+    - Login Server: data.login_server
+    - Admin User Enabled: data.admin_user_enabled
+      type: enum
+      enums:
+        - "true":
+          type: badge
+          options:
+          text: Enabled
+          color: green.500
+        - "false":
+          type: badge
+          options:
+          text: Disabled
+          color: gray.500
+
+tabs.1:
+  name: Identity
+  type: table
+  root_path: data.identities
+  fields:
+    - Name: name
+    - Type: type
+    - Resource Group: resource_group
+    - Subscription ID: subscription_id
+
+tabs.2:
+  name: Networking
+  type: item
+  fields:
+    - Public Network Access: data.public_network_access
+    - Login Server: data.login_server
+    - Data Endpoint Enabled: data.data_endpoint_enabled
+    - Data Endpoint: data.data_endpoint
+    - Location: data.location
+
+tabs.3:
+  name: Private Access
+  type: table
+  root_path: data.private_endpoints
+  fields:
+    - Connection Name: connection_name
+    - Connection State: connection_state.status
+    - Private Endpoint: private_endpoint_id
+    - Description: connection_state.description
+    - Provisioning State: provisioning_state
+
+tabs.4:
+  name: Properties
+  type: item
+  fields:
+    - Login Server: data.login_server
+    - Domain Name Label Scope: data.domain_name_label_scope
+    - Admin User Enabled: data.admin_user_enabled
+    - Pricing Tier: data.sku.name
+    - Soft Delete Enabled: data.soft_delete_enabled
+    - Role Assignment Mode: data.role_assignment_mode
+
+tabs.5:
+  name: Locks
+  type: table
+  root_path: data.locks
+  fields:
+    - Lock Name: name
+    - Lock Type: level
+    - Scope: scope
+    - Notes: notes
+
+# 2. 서비스 카테고리
+tabs.6:
+  name: Repositories
+  type: table
+  root_path: data.repositories
+  fields:
+    - Repository: name
+    - Has Cache Rule: has_cache_rule
+      is_optional: true
+
+tabs.7:
+  name: Webhooks
+  type: table
+  root_path: data.webhooks
+  fields:
+    - Name: name
+    - Location: location
+    - Actions: actions
+      type: list
+      options:
+        delimiter: '<br>'
+    - Scope: scope
+    - Status: status
+
+tabs.8:
+  name: Geo-replications
+  type: table
+  root_path: data.replications
+  fields:
+    - Name: name
+    - Location: location
+    - Provisioning State: provisioning_state
+    - Status: status.display_status
+
+tabs.9:
+  name: Tasks
+  type: table
+  root_path: data.tasks
+  fields:
+    - Task: name
+    - Platform: platform.os
+    - Created At: creation_date
+      type: datetime
+      source_type: iso8601
+    - Trigger: trigger.source_triggers.[0].name
+
+tabs.10:
+  name: Connected Registries
+  type: table
+  root_path: data.connected_registries
+  fields:
+    - Name: name
+    - Mode: mode
+    - State: provisioning_state
+    - Enabled: status
+    - Last Sync: last_sync_time
+      type: datetime
+      source_type: iso8601
+
+tabs.11:
+  name: Cache Rules
+  type: table
+  root_path: data.cache_rules
+  fields:
+    - Name: name
+    - Source Registry: source_repository
+    - Credential: credential_set_resource_id
+    - Target Repository: target_repository
+
+tabs.12:
+  name: Cache Credentials
+  type: table
+  root_path: data.cache_credentials
+  fields:
+    - Name: name
+    - Status: status
+
+# 3. 리포지토리 권한
+tabs.13:
+  name: Tokens
+  type: table
+  root_path: data.tokens
+  fields:
+    - Name: name
+    - Scope Map: scope_map_id
+    - Password1 Expiry: password1_expiry
+      type: datetime
+      source_type: iso8601
+    - Password2 Expiry: password2_expiry
+      type: datetime
+      source_type: iso8601
+    - Status: status
+    - Created At: creation_date
+      type: datetime
+      source_type: iso8601
+
+tabs.14:
+  name: Scope Maps
+  type: table
+  root_path: data.scope_maps
+  fields:
+    - Name: name
+    - Type: type
+    - Created At: creation_date
+      type: datetime
+      source_type: iso8601
+    - Description: description
+
+tabs.15:
+  name: Tags
+  type: table
+  root_path: tags
+  fields:
+    - Key: key
+    - Value: value
