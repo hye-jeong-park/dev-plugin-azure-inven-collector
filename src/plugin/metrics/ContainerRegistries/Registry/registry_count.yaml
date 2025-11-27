@@ -24,7 +24,7 @@ query_options:
     - key: data.sku.name
       name: Pricing Tier
 
-    - key: data.properties.provisioning_state
+    - key: data.provisioning_state
       name: Provisioning State
       default: true
 
