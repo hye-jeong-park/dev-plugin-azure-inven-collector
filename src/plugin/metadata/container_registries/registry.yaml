@@ -49,16 +49,10 @@ table:
     - Admin User: data.admin_user_enabled
       type: enum
       enums:
-        - "true":
+        - true: green.500
           type: badge
-          options:
-          text: Enabled
-          color: green.500
-        - "false":
+        - false: gray.500
           type: badge
-          options:
-          text: Disabled
-          color: gray.500
 
 # 1. 설정 카테고리
 tabs.0:
@@ -70,16 +64,10 @@ tabs.0:
     - Admin User Enabled: data.admin_user_enabled
       type: enum
       enums:
-        - "true":
+        - true: green.500
           type: badge
-          options:
-          text: Enabled
-          color: green.500
-        - "false":
+        - false: gray.500
           type: badge
-          options:
-          text: Disabled
-          color: gray.500
 
 tabs.1:
   name: Identity
