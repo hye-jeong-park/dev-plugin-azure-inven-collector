@@ -4,5 +4,6 @@ name: ContainerRegistries/Registry
 resource_type: inventory.CloudService:azure.ContainerRegistries.Registry
 group: azure
 category: ASSET
-icon: https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com/console-assets/icons/cloud-services/azure/azure-container-registries.svg
+#수정필요
+icon: https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com/console-assets/icons/cloud-services/azure/azure-container-instances.svg
 version: '1.0'
