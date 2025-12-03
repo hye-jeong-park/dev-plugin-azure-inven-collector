@@ -13,39 +13,15 @@ table:
     key: data.id
     desc: false
   fields:
-    - Name: name
     - Resource Group: data.resource_group
     - Location: data.location
     - Subscription: data.subscription_name
+
+tabs.0:
+  name: Access Keys
+  type: item
+  fields:
     - Login Server: data.login_server
-    - Pricing Tier: data.sku.name
-    - Provisioning State: data.provisioning_state
-      type: enum
-      enums:
-        - Succeeded:
-          icon_image: ic_circle-filled
-          icon_color: green.500
-          type: state
-        - Failed:
-          icon_image: ic_circle-filled
-          icon_color: red.500
-          type: state
-        - Creating:
-          icon_image: ic_circle-filled
-          icon_color: yellow.500
-          type: state
-        - Updating:
-          icon_image: ic_circle-filled
-          icon_color: yellow.500
-          type: state
-        - Deleting:
-          icon_image: ic_circle-filled
-          icon_color: gray.500
-          type: state
-        - Canceled:
-          icon_image: ic_circle-filled
-          icon_color: gray.500
-          type: state
     - Admin User: data.admin_user_enabled
       type: enum
       enums:
@@ -53,66 +29,48 @@ table:
           type: badge
         - false: gray.500
           type: badge
-
-# 1. 설정 카테고리
-tabs.0:
-  name: Access Keys
-  type: item
-  fields:
     - Registry Name: name
-    - Login Server: data.login_server
-    - Admin User Enabled: data.admin_user_enabled
-      type: enum
-      enums:
-        - true: green.500
-          type: badge
-        - false: gray.500
-          type: badge
 
 tabs.1:
-  name: Identity
-  type: table
-  root_path: data.identities
-  fields:
-    - Name: name
-    - Type: type
-    - Resource Group: resource_group
-    - Subscription ID: subscription_id
-
-tabs.2:
-  name: Networking
+  name: ID
   type: item
   fields:
-    - Public Network Access: data.public_network_access
+    - Resource Group: data.resource_group
+    - Subscribe: data.subscription_name
+
+tabs.2:
+  name: Networking (Public Access)
+  type: item
+  fields:
     - Login Server: data.login_server
-    - Data Endpoint Enabled: data.data_endpoint_enabled
+    - Use Dedicated Data Endpoints: data.data_endpoint_enabled
     - Data Endpoint: data.data_endpoint
     - Location: data.location
 
 tabs.3:
-  name: Private Access
+  name: Networking (Private Access)
   type: table
   root_path: data.private_endpoints
   fields:
     - Connection Name: connection_name
-    - Connection State: connection_state.status
+    - Connection Status: connection_state.status
     - Private Endpoint: private_endpoint_id
-    - Description: connection_state.description
+    - Explanation: connection_state.description
     - Provisioning State: provisioning_state
 
 tabs.4:
-  name: Properties
+  name: Attributes
   type: item
   fields:
     - Login Server: data.login_server
-    - Domain Name Label Scope: data.domain_name_label_scope
-    - Admin User Enabled: data.admin_user_enabled
-    - Pricing Tier: data.sku.name
-    - Soft Delete Enabled: data.soft_delete_enabled
-    - Role Assignment Mode: data.role_assignment_mode
+    - Domain Name Label Range: data.domain_name_label_scope
+    - Admin User: data.admin_user_enabled
+    - Pricing Plans: data.sku.name
+    - Temporary Deletion: data.soft_delete_enabled
+    - Role Assignment Permissions Mode: data.role_assignment_mode
 
 tabs.5:
-  name: Locks
+  name: Lock
   type: table
   root_path: data.locks
   fields:
@@ -121,14 +79,13 @@ tabs.5:
     - Scope: scope
     - Notes: notes
 
-# 2. 서비스 카테고리
 tabs.6:
-  name: Repositories
+  name: Repository
   type: table
   root_path: data.repositories
   fields:
     - Repository: name
-    - Has Cache Rule: has_cache_rule
+    - Cache Rules: has_cache_rule
       is_optional: true
 
 tabs.7:
@@ -138,101 +95,84 @@ tabs.7:
   fields:
     - Name: name
     - Location: location
-    - Actions: actions
+    - Movement: actions
       type: list
       options:
         delimiter: '<br>'
-    - Scope: scope
-    - Status: status
+    - Range: scope
+    - Situation: status
 
 tabs.8:
-  name: Geo-replications
+  name: Replication in the region
   type: table
   root_path: data.replications
   fields:
     - Name: name
     - Location: location
-    - Provisioning State: provisioning_state
-    - Status: status.display_status
+    - Provisioning Status: provisioning_state
+    - Situation: status.display_status
 
 tabs.9:
-  name: Tasks
+  name: Work
   type: table
   root_path: data.tasks
   fields:
-    - Task: name
+    - Work: name
     - Platform: platform.os
-    - Created At: creation_date
+    - Created: creation_date
       type: datetime
       source_type: iso8601
     - Trigger: trigger.source_triggers.[0].name
 
 tabs.10:
-  name: Connected Registries
+  name: Connected registry
   type: table
   root_path: data.connected_registries
   fields:
     - Name: name
     - Mode: mode
-    - State: provisioning_state
-    - Enabled: status
+    - Situation: provisioning_state
+    - Active Status: status
     - Last Sync: last_sync_time
       type: datetime
       source_type: iso8601
 
 tabs.11:
-  name: Cache Rules
+  name: Cache
   type: table
   root_path: data.cache_rules
   fields:
     - Name: name
-    - Source Registry: source_repository
-    - Credential: credential_set_resource_id
-    - Target Repository: target_repository
+    - Original Registry: source_repository
+    - Credentials: credential_set_resource_id
+    - ACR Repository: target_repository
 
 tabs.12:
-  name: Cache Credentials
-  type: table
-  root_path: data.cache_credentials
-  fields:
-    - Name: name
-    - Status: status
-
-# 3. 리포지토리 권한
-tabs.13:
-  name: Tokens
+  name: Token
   type: table
   root_path: data.tokens
   fields:
     - Name: name
-    - Scope Map: scope_map_id
-    - Password1 Expiry: password1_expiry
+    - Range Map: scope_map_id
+    - Password 1 Expired: password1_expiry
       type: datetime
       source_type: iso8601
-    - Password2 Expiry: password2_expiry
+    - Password 2 Expired: password2_expiry
       type: datetime
       source_type: iso8601
-    - Status: status
-    - Created At: creation_date
+    - Situation: status
+    - Date Created: creation_date
       type: datetime
       source_type: iso8601
 
-tabs.14:
-  name: Scope Maps
+tabs.13:
+  name: Range Map
   type: table
   root_path: data.scope_maps
   fields:
     - Name: name
-    - Type: type
-    - Created At: creation_date
+    - Form: type
+    - Date Created: creation_date
       type: datetime
       source_type: iso8601
-    - Description: description
-
-tabs.15:
-  name: Tags
-  type: table
-  root_path: tags
-  fields:
-    - Key: key
-    - Value: value
+    - Explanation: description

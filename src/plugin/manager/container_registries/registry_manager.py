@@ -216,9 +216,6 @@ class ContainerRegistriesManager(AzureBaseManager):
         registry_dict["identities"] = identities
 
         # 네트워킹
-        registry_dict["public_network_access"] = registry_dict.get(
-            "public_network_access", "Enabled"
-        )
         registry_dict["private_endpoints"] = []  # Placeholder
 
         # 속성
