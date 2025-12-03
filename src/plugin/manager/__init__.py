@@ -24,3 +24,4 @@ from .virtual_machines import *
 from .virtual_networks import *
 from .vm_scale_sets import *
 from .web_pub_sub_service import *
+from .functions import *
