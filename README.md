@@ -1,3 +1,59 @@
+> ⚠️ Notice
+>
+> This repository is **my personal development mirror** of the official open-source project  
+> [cloudforet-io/plugin-azure-inven-collector](https://github.com/cloudforet-io/plugin-azure-inven-collector).
+>
+> I am an active contributor to the upstream project, working under my company GitHub account:  
+> **[Hye Jeong Park (phj-loopy)](https://github.com/phj-loopy)**  
+>
+> If you would like to review my official contributions (issues, PRs, discussions),  
+> please refer to my activity on the upstream repository via the profile above.
+>
+> This repository is used as a **personal workspace** for experimentation, metadata extension,  
+> and feature refinement **before submitting changes back to the official upstream**.
+>
+> Initial commits such as `feat: base` and other foundational code **were not written by me**;  
+> they originate from the Cloudforet open-source implementation.
+>
+> My work in this mirror primarily includes:
+> - Extending metadata for Azure Functions, Container Registries, and Kubernetes Service (AKS)  
+> - Improving UX-oriented modeling for SpaceONE console  
+> - Enhancing collector logic aligned with SpaceONE’s architecture
+>
+> For the **official plugin, verified contribution history, and release notes**,  
+> please refer to the upstream repository and my profile (**[phj-loopy](https://github.com/phj-loopy)**).
+>
+> ---
+>
+> ⚠️ 안내
+>
+> 이 저장소는 Cloudforet 오픈소스 프로젝트  
+> [cloudforet-io/plugin-azure-inven-collector](https://github.com/cloudforet-io/plugin-azure-inven-collector)를  
+> 기반으로 한 **개인 개발용 미러 레포지토리**입니다.
+>
+> 저는 회사 GitHub 계정 **[Hye Jeong Park (phj-loopy)](https://github.com/phj-loopy)** 로  
+> 해당 오픈소스에 기여하고 있으며,  
+> 공식적인 이슈·PR·기여 내역은 위 프로필 링크에서 확인 가능합니다.
+>
+> 이 레포지토리는 upstream 반영 전 기능 확장과 실험을 위한  
+> **개인 워크스페이스** 역할을 합니다.
+>
+> `feat: base` 등 초기 커밋과 기본 구조는 **제가 작성한 코드가 아니며**,  
+> Cloudforet 팀의 원본 코드입니다.
+>
+> 제가 기여하는 주요 영역은 다음과 같습니다:
+> - Azure Functions / Container Registries / Kubernetes Service(AKS) 메타데이터 확장  
+> - SpaceONE 콘솔 UX 기반 모델링 개선  
+> - SpaceONE Collector 아키텍처에 맞춘 수집 로직 개선 및 추가
+>
+> 공식 정보와 기여 이력은 upstream 저장소와  
+> 제 회사 계정 **[phj-loopy](https://github.com/phj-loopy)** 의 활동 내역을 참고해주세요.
+
+<br>
+<br>
+
+<!-- Original README below -->
+
 <h1 align="center">Microsoft Azure Collector</h1>  
 
 <br/>  
